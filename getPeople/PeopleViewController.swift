@@ -14,24 +14,43 @@ class PeopleViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://swapi.dev/api/people/?format=json")!
-        
-        URLSession.shared.dataTask(with: url, completionHandler: {
-            data, response, error in
-            do{
+        StarWarsModel.getAllPeople { data, response, error in
+            do {
                 let response = try JSONDecoder().decode(SWAPIPeopleResponse.self, from: data!)
-                for person in response.results{
-                    self.peoples.append(person.name)
-                }
+                         for person in response.results{
+                             self.peoples.append(person.name)
+                          }
+                          
+                         DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                         }
+                      }catch{
+                         print("Error \(error)")
+                     }
+                             
+                   }
+        }
+        
+        
+        
+     //   let url = URL(string: "https://swapi.dev/api/people/?format=json")!
+        
+     //   URLSession.shared.dataTask(with: url, completionHandler: {
+      //      data, response, error in
+     //       do{
+      //          let response = try JSONDecoder().decode(SWAPIPeopleResponse.self, from: data!)
+       //         for person in response.results{
+       //             self.peoples.append(person.name)
+       //         }
                 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }catch{
-                print("Error \(error)")
-            }
-        }).resume()
-    }
+        //        DispatchQueue.main.async {
+         //           self.tableView.reloadData()
+        //        }
+         //   }catch{
+         //       print("Error \(error)")
+      //      }
+    //    }).resume()
+  //  }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

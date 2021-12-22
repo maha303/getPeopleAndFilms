@@ -14,10 +14,7 @@ class FilmsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://swapi.dev/api/films/?format=json")!
-        
-        URLSession.shared.dataTask(with: url, completionHandler: {
-            data, response, error in
+        StarWarsModel.getAllfilms { data, response, error in
             do{
                 let response = try JSONDecoder().decode(SWAPIFilmsResponse.self, from: data!)
                 for film in response.results{
@@ -27,10 +24,31 @@ class FilmsViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+                
             }catch{
                 print("Error \(error)")
             }
-        }).resume()
+        }
+        
+     //   let url = URL(string: "https://swapi.dev/api/films/?format=json")!
+        
+     //   URLSession.shared.dataTask(with: url, completionHandler: {
+     //       data, response, error in
+      //      do{
+      //          let response = try JSONDecoder().decode(SWAPIFilmsResponse.self, from: data!)
+       //         for film in response.results{
+       //             self.films.append(film.title)
+       //         }
+                
+       //         DispatchQueue.main.async {
+      //              self.tableView.reloadData()
+      //          }
+                
+      //      }catch{
+      //          print("Error \(error)")
+      //      }
+            
+    //    }).resume()
         
     }
     // MARK: - Table view data source
