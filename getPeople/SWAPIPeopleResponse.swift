@@ -31,5 +31,3 @@ struct SWAPIPeopleResponse : Codable {
     let results: [Result]
 }
 
-// MARK: - Result
-

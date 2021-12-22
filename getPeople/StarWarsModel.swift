@@ -21,6 +21,9 @@ class StarWarsModel {
         let task = session.dataTask(with: url!, completionHandler: completionHandler)
         task.resume()
     }
+   
+    
+    
     
 }
 

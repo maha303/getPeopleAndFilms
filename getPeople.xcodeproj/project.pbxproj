@@ -18,6 +18,8 @@
 		295D21E027715EA0003D9C1A /* SWAPIPeopleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D21DF27715EA0003D9C1A /* SWAPIPeopleResponse.swift */; };
 		295D21E227715EC2003D9C1A /* SWAPIFilmsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D21E127715EC2003D9C1A /* SWAPIFilmsResponse.swift */; };
 		29FE63522773835300093299 /* StarWarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE63512773835300093299 /* StarWarsModel.swift */; };
+		29FE63542773A1A600093299 /* PeopleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE63532773A1A600093299 /* PeopleDetailsViewController.swift */; };
+		29FE63562773A1C300093299 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE63552773A1C300093299 /* FilmDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		295D21DF27715EA0003D9C1A /* SWAPIPeopleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIPeopleResponse.swift; sourceTree = "<group>"; };
 		295D21E127715EC2003D9C1A /* SWAPIFilmsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIFilmsResponse.swift; sourceTree = "<group>"; };
 		29FE63512773835300093299 /* StarWarsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsModel.swift; sourceTree = "<group>"; };
+		29FE63532773A1A600093299 /* PeopleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetailsViewController.swift; sourceTree = "<group>"; };
+		29FE63552773A1C300093299 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				295D21DF27715EA0003D9C1A /* SWAPIPeopleResponse.swift */,
 				295D21E127715EC2003D9C1A /* SWAPIFilmsResponse.swift */,
 				295D21CC27715BE2003D9C1A /* Main.storyboard */,
+				29FE63532773A1A600093299 /* PeopleDetailsViewController.swift */,
+				29FE63552773A1C300093299 /* FilmDetailsViewController.swift */,
 				295D21D227715BE4003D9C1A /* Assets.xcassets */,
 				295D21D427715BE4003D9C1A /* LaunchScreen.storyboard */,
 				295D21D727715BE4003D9C1A /* Info.plist */,
@@ -154,11 +160,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				295D21CB27715BE2003D9C1A /* PeopleViewController.swift in Sources */,
+				29FE63562773A1C300093299 /* FilmDetailsViewController.swift in Sources */,
 				295D21C727715BE2003D9C1A /* AppDelegate.swift in Sources */,
 				295D21DE27715E4B003D9C1A /* FilmsViewController.swift in Sources */,
 				295D21E227715EC2003D9C1A /* SWAPIFilmsResponse.swift in Sources */,
 				295D21C927715BE2003D9C1A /* SceneDelegate.swift in Sources */,
 				295D21E027715EA0003D9C1A /* SWAPIPeopleResponse.swift in Sources */,
+				29FE63542773A1A600093299 /* PeopleDetailsViewController.swift in Sources */,
 				29FE63522773835300093299 /* StarWarsModel.swift in Sources */,
 				295D21D127715BE2003D9C1A /* getPeople.xcdatamodeld in Sources */,
 			);

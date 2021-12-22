@@ -7,21 +7,32 @@
 
 import UIKit
 
+
+
 class PeopleViewController: UITableViewController {
 
-    var peoples : [String] = []
+    var peoples = [NSDictionary] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         StarWarsModel.getAllPeople { data, response, error in
             do {
-                let response = try JSONDecoder().decode(SWAPIPeopleResponse.self, from: data!)
-                         for person in response.results{
-                             self.peoples.append(person.name)
-                          }
+            
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                                    if let result = jsonResult["results"] as? NSArray {
+                                        for person in result {
+                                            
+                                            let personDic = person as! NSDictionary
+                                             
+                                             self.peoples.append(personDic)
+                                           
+                                            }
+                                        }
+                                    }
+                      
                           
-                         DispatchQueue.main.async {
+          DispatchQueue.main.async {
                             self.tableView.reloadData()
                          }
                       }catch{
@@ -31,35 +42,25 @@ class PeopleViewController: UITableViewController {
                    }
         }
         
-        
-        
-     //   let url = URL(string: "https://swapi.dev/api/people/?format=json")!
-        
-     //   URLSession.shared.dataTask(with: url, completionHandler: {
-      //      data, response, error in
-     //       do{
-      //          let response = try JSONDecoder().decode(SWAPIPeopleResponse.self, from: data!)
-       //         for person in response.results{
-       //             self.peoples.append(person.name)
-       //         }
-                
-        //        DispatchQueue.main.async {
-         //           self.tableView.reloadData()
-        //        }
-         //   }catch{
-         //       print("Error \(error)")
-      //      }
-    //    }).resume()
-  //  }
-
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         peoples.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = peoples[indexPath.row]
+        cell.textLabel?.text = peoples[indexPath.row]["name"] as? String
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let person = peoples[indexPath.row]
+        
+        performSegue(withIdentifier: "personShow", sender: person)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let person = sender as? NSDictionary
+        let decController = segue.destination as? PeopleDetailsViewController
+        decController?.passedPerson = person
     }
     
 
